@@ -10,14 +10,11 @@ Goal: internalize Zig's memory and type model before touching I/O. Every project
 
 ### Data Structures
 
-- **Singly-linked list** — pointer arithmetic, optional pointers (`?*Node`), `@fieldParentPtr`
-- **Intrusive doubly-linked list** — embed the list node inside the payload struct; teaches you the intrusive pattern TigerBeetle uses everywhere
+- **Singly-linked list** — pointer arithmetic, optional pointers (`?*Node`), `@fieldParentPtr` [DONE]
 - **Ring buffer (SPSC)** — fixed-size, comptime capacity, power-of-two index masking; no atomics yet, just the layout
 - **Dynamic array (ArrayList clone)** — manual `realloc` via allocator interface, amortized growth; understand when *not* to use this (fixed budgets)
-- **Open-addressing hash map** — Robin Hood probing or linear probing with tombstones; comptime key/value types
 - **B-tree** — internal vs leaf nodes, splitting on insert, merging on delete; this is the storage engine core. Use a fixed node size (e.g. 4096 bytes, one disk page). Make it generic over key/value with a comptime comparator.
-- **Skip list** — probabilistic balancing, comptime max levels; useful contrast to B-tree for in-memory indexes
-- **Min-heap / priority queue** — needed later for timer wheels in the event loop
+
 
 ### Memory
 
